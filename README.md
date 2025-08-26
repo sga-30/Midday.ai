@@ -1,7 +1,7 @@
 # Midday.ai Clone
 
 This repository contains the replication of the [Midday.ai](https://midday.ai) website as part of the internship project. The focus of this phase is to understand and set up the site at hand and prepare the development environment.  
-The project characteristics basically focus on how the running of the business, especially when it came to the bigger tasks it typically involves tracking time, sending invoices, etc, which are scattered across different platforms. I've noticed that large companies struggle to adapt and invent swiftly and efficiently.
+The project focuses on how the running of the business, especially when it came to the bigger tasks it typically involves tracking time, sending invoices, which are scattered across different platforms.
 
 ## Project Goal  
 The goal is to build a working clone of Midday.ai with similar structure, features, and design.  
