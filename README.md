@@ -1,11 +1,10 @@
 # Midday.ai Clone
 
-This repository contains the **Phase 1 context** of replicating the [Midday.ai](https://midday.ai) website as part of the internship project. The focus of this phase is **Project Understanding & Setup** — analyzing the target site and preparing the development environment.  
+This repository contains the replication of the [Midday.ai](https://midday.ai) website as part of the internship project. The focus of this phase is to understand and set up the site at hand and prepare the development environment.  
 The project characteristics basically focus on how the running of the business, especially when it came to the bigger tasks it typically involves tracking time, sending invoices, etc, which are scattered across different platforms. I've noticed that large companies struggle to adapt and invent swiftly and efficiently.
 
 ## Project Goal  
-
-The overall goal is to build a working clone of Midday.ai with similar structure, features, and design.  
+The goal is to build a working clone of Midday.ai with similar structure, features, and design.  
 - Phase 1 ensures a **proper context of the site** and sets up the **body of the project** for future reference.  
 
 ### 1. Website Analysis  
@@ -27,7 +26,6 @@ The overall goal is to build a working clone of Midday.ai with similar structure
 - Created **GitHub repository** for version control.  
 - Installed **VS Code** with extensions:  
   - React snippets  
-  - Prettier (code formatter)  
   - Bootstrapped project with:  
   - `create-react-app` (or Vite for a lighter setup).  
   - Initialized **Supabase** project (for database + authentication).  
