@@ -1,4 +1,4 @@
-# Midday.ai Clone – Phase 1 
+# Midday.ai Clone
 
 This repository contains the **Phase 1 context** of replicating the [Midday.ai](https://midday.ai) website as part of the internship project. The focus of this phase is **Project Understanding & Setup** — analyzing the target site and preparing the development environment.  
 The project characteristics basically focus on how the running of the business, especially when it came to the bigger tasks it typically involves tracking time, sending invoices, etc, which are scattered across different platforms. I've noticed that large companies struggle to adapt and invent swiftly and efficiently.
