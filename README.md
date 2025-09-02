@@ -5,7 +5,9 @@ The project focuses on how the running of the business, especially when it came 
 
 ## Project Goal  
 The goal is to build a working clone of Midday.ai with similar structure, features, and design.  
-- Phase 1 ensures a **proper context of the site** and sets up the **body of the project** for future reference.  
+
+### PHASE 1
+- This is to ensure a **proper context of the site** and sets up the **body of the project** for future reference.  
 
 ### 1. Website Analysis  
 - Features:
@@ -31,7 +33,8 @@ The goal is to build a working clone of Midday.ai with similar structure, featur
   - Initialized **Supabase** project (for database + authentication).  
   - Prepared **Vercel account** for future deployment.
  
-  - Phase 2 builds the **frontend UI** using React, HTML and Java. Then it makes a fully functional **static UI** of Midday.ai clone without **backend functionality**.
+### PHASE 2
+- This builds the **frontend UI** using React, HTML and Java. Then it makes a fully functional **static UI** of Midday.ai clone without **backend functionality**.
  
   ### 1. Page Routing
   - I used a react router to set up navigation(Home, Features, Login, etc)
