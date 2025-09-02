@@ -29,4 +29,20 @@ The goal is to build a working clone of Midday.ai with similar structure, featur
   - Bootstrapped project with:  
   - `create-react-app` (or Vite for a lighter setup).  
   - Initialized **Supabase** project (for database + authentication).  
-  - Prepared **Vercel account** for future deployment.  
+  - Prepared **Vercel account** for future deployment.
+ 
+  - Phase 2 builds the **frontend UI** using React, HTML and Java. Then it makes a fully functional **static UI** of Midday.ai clone without **backend functionality**.
+ 
+  ### 1. Page Routing
+  - I used a react router to set up navigation(Home, Features, Login, etc)
+ 
+  ### 2. UI Components
+  - I broke down the site into components that can be reused like Navbar, Footer, etc
+  - I added a styling method using CSS Modules or Styled components
+  - I also needed to match the actual website color scheme and spacing but I added a version for night and day background to switch to any given time or preference
+ 
+ ### 3. Responsive Design
+ - I had to ensure it was responsive to mobile/desktop and also tested using browser dev tools.
+
+ ### 4. Animations
+  - I used CSS animations to replicate the transitions the actual website does.
