@@ -67,3 +67,17 @@
  
   ##### 3. Frontend - Backend Communication
   - I used fetch to connect React frontend to Supabase.
+---
+
+##### PHASE 4
+- I ensured the clone works smoothly across devices.
+
+  ##### 1. Functionality Testing
+  - I check forms and responsiveness.
+  - I verifies Supabase connections & API responses.
+ 
+  ##### 2. Bug Fixes
+  - I resolved UI glitches and handled any failed requests promptly.
+ 
+  ##### 3. Code Review
+  - I ensured that the code is clean and well - commented.
