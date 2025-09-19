@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "vite build",
-    "dev": "vite",
+    "build": "next build",
+    "dev": "next dev",
     "preview": "vite preview",
     "lint": "next lint",
     "start": "next start"
