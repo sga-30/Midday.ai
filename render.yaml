@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: midday-backend
+    env: docker
+    plan: free
+    repo: <your-github-repo-url> # update
+    dockerfilePath: backend/Dockerfile
+    buildCommand: ''
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT

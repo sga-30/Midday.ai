@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ### Midday.ai Clone
 
  ###### This repository contains the replication of the [Midday.ai](https://midday.ai) website as part of the internship project. The focus of this phase is to understand and set up the site at hand and prepare the development environment.  
