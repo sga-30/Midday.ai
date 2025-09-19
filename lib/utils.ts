@@ -1,7 +1,7 @@
-// lib/supabaseClient.ts
-import { createClient } from "@supabase/supabase-js";
+// lib/utils.ts
+import { clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export function cn(...inputs: (string | undefined | null | false)[]) {
+  return twMerge(clsx(inputs))
+}
