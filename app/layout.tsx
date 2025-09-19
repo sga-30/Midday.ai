@@ -7,9 +7,12 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: "Midday Clone - Financial Management Platform",
   description: "Modern financial management platform for invoicing, time tracking, and business analytics",
+};
+
+export const viewport = {
   viewport: "width=device-width, initial-scale=1",
-    generator: 'v0.app'
-}
+    generator: 'v0.app',
+};
 
 export default function RootLayout({
   children,
