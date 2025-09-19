@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Navigation } from "@/components/navigation"
@@ -38,6 +37,12 @@ export default function SignUpPage() {
       return
     }
 
+    if (formData.password.length < 8) {
+      setError("Password must be at least 8 characters long")
+      setIsLoading(false)
+      return
+    }
+
     try {
       const response = await fetch("/api/auth/signup", {
         method: "POST",
@@ -54,11 +59,8 @@ export default function SignUpPage() {
       const data = await response.json()
 
       if (data.success) {
-        // Store user token (in real app, use secure storage)
         localStorage.setItem("authToken", data.token)
         localStorage.setItem("user", JSON.stringify(data.user))
-
-        // Redirect to dashboard
         router.push("/dashboard")
       } else {
         setError(data.error || "Sign up failed")
@@ -78,37 +80,41 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-950 dark:to-black">
       <Navigation />
 
       <main className="max-w-md mx-auto px-6 pt-20 pb-32">
-        <Card className="border-gray-200/50 bg-white/90 backdrop-blur-xl shadow-2xl">
+        <Card className="border-gray-200/50 bg-white/90 dark:bg-gray-800/90 dark:border-gray-700 backdrop-blur-xl shadow-2xl">
           <CardHeader className="text-center space-y-4">
-            <CardTitle className="text-2xl font-light">Create your account</CardTitle>
-            <CardDescription className="text-gray-600">Start your 30-day free trial today</CardDescription>
+            <CardTitle className="text-2xl font-light text-gray-900 dark:text-gray-100">
+              Create your account
+            </CardTitle>
+            <CardDescription className="text-gray-600 dark:text-gray-400">
+              Start your 30-day free trial today
+            </CardDescription>
           </CardHeader>
 
           <CardContent className="space-y-6">
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-lg p-3 flex items-center space-x-2">
-                <AlertCircle className="w-4 h-4 text-red-600" />
-                <span className="text-sm text-red-700">{error}</span>
+              <div className="bg-red-50 dark:bg-red-900/50 border border-red-200 dark:border-red-800 rounded-lg p-3 flex items-center space-x-2">
+                <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400" />
+                <span className="text-sm text-red-700 dark:text-red-300">{error}</span>
               </div>
             )}
 
             {/* Benefits */}
-            <div className="bg-gray-50/80 rounded-2xl p-4 space-y-3">
+            <div className="bg-gray-50/80 dark:bg-gray-700/50 rounded-2xl p-4 space-y-3">
               <div className="flex items-center space-x-3 text-sm">
                 <Check className="w-4 h-4 text-green-600" />
-                <span className="text-gray-700">30-day free trial</span>
+                <span className="text-gray-700 dark:text-gray-200">30-day free trial</span>
               </div>
               <div className="flex items-center space-x-3 text-sm">
                 <Check className="w-4 h-4 text-green-600" />
-                <span className="text-gray-700">No credit card required</span>
+                <span className="text-gray-700 dark:text-gray-200">No credit card required</span>
               </div>
               <div className="flex items-center space-x-3 text-sm">
                 <Check className="w-4 h-4 text-green-600" />
-                <span className="text-gray-700">Cancel anytime</span>
+                <span className="text-gray-700 dark:text-gray-200">Cancel anytime</span>
               </div>
             </div>
 
@@ -116,7 +122,8 @@ export default function SignUpPage() {
             <div className="space-y-3">
               <Button
                 variant="outline"
-                className="w-full py-3 rounded-full border-gray-300 bg-white hover:bg-gray-50"
+                className="w-full py-3 rounded-full border-gray-300 bg-white hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100"
+                onClick={() => alert("GitHub auth not yet implemented")}
                 disabled={isLoading}
               >
                 <Github className="mr-2 h-4 w-4" />
@@ -124,7 +131,8 @@ export default function SignUpPage() {
               </Button>
               <Button
                 variant="outline"
-                className="w-full py-3 rounded-full border-gray-300 bg-white hover:bg-gray-50"
+                className="w-full py-3 rounded-full border-gray-300 bg-white hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100"
+                onClick={() => alert("Google auth not yet implemented")}
                 disabled={isLoading}
               >
                 <Mail className="mr-2 h-4 w-4" />
@@ -137,21 +145,23 @@ export default function SignUpPage() {
                 <Separator className="w-full" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-white px-2 text-gray-500">Or continue with email</span>
+                <span className="bg-white dark:bg-gray-800 px-2 text-gray-500 dark:text-gray-400">
+                  Or continue with email
+                </span>
               </div>
             </div>
 
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="firstName" className="text-sm font-medium text-gray-700">
+                  <Label htmlFor="firstName" className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     First name
                   </Label>
                   <Input
                     id="firstName"
                     type="text"
                     placeholder="John"
-                    className="rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-500"
+                    className="rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-500 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-100"
                     value={formData.firstName}
                     onChange={handleInputChange}
                     disabled={isLoading}
@@ -159,14 +169,14 @@ export default function SignUpPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="lastName" className="text-sm font-medium text-gray-700">
+                  <Label htmlFor="lastName" className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     Last name
                   </Label>
                   <Input
                     id="lastName"
                     type="text"
                     placeholder="Doe"
-                    className="rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-500"
+                    className="rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-500 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-100"
                     value={formData.lastName}
                     onChange={handleInputChange}
                     disabled={isLoading}
@@ -176,14 +186,14 @@ export default function SignUpPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+                <Label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   Email address
                 </Label>
                 <Input
                   id="email"
                   type="email"
                   placeholder="john@example.com"
-                  className="rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-500"
+                  className="rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-500 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-100"
                   value={formData.email}
                   onChange={handleInputChange}
                   disabled={isLoading}
@@ -192,20 +202,22 @@ export default function SignUpPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-sm font-medium text-gray-700">
+                <Label htmlFor="password" className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   Password
                 </Label>
                 <Input
                   id="password"
                   type="password"
                   placeholder="Create a strong password"
-                  className="rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-500"
+                  className="rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-500 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-100"
                   value={formData.password}
                   onChange={handleInputChange}
                   disabled={isLoading}
                   required
                 />
-                <div className="text-xs text-gray-500">Must be at least 8 characters with letters and numbers</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">
+                  Must be at least 8 characters with letters and numbers
+                </div>
               </div>
 
               <div className="flex items-center space-x-2">
@@ -215,13 +227,13 @@ export default function SignUpPage() {
                   onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)}
                   disabled={isLoading}
                 />
-                <Label htmlFor="terms" className="text-sm text-gray-600">
+                <Label htmlFor="terms" className="text-sm text-gray-600 dark:text-gray-300">
                   I agree to the{" "}
-                  <Link href="/terms" className="text-gray-900 hover:text-gray-700 transition-colors">
+                  <Link href="/terms" className="text-gray-900 dark:text-gray-100 hover:underline">
                     Terms of Service
                   </Link>{" "}
                   and{" "}
-                  <Link href="/privacy" className="text-gray-900 hover:text-gray-700 transition-colors">
+                  <Link href="/privacy" className="text-gray-900 dark:text-gray-100 hover:underline">
                     Privacy Policy
                   </Link>
                 </Label>
@@ -246,9 +258,12 @@ export default function SignUpPage() {
               </Button>
             </form>
 
-            <div className="text-center text-sm text-gray-600">
+            <div className="text-center text-sm text-gray-600 dark:text-gray-400">
               Already have an account?{" "}
-              <Link href="/auth/signin" className="font-medium text-gray-900 hover:text-gray-700 transition-colors">
+              <Link
+                href="/auth/signin"
+                className="font-medium text-gray-900 dark:text-gray-100 hover:underline"
+              >
                 Sign in
               </Link>
             </div>
@@ -258,3 +273,4 @@ export default function SignUpPage() {
     </div>
   )
 }
+
