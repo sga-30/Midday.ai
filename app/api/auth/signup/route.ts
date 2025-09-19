@@ -1,27 +1,36 @@
-import { type NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
+import { supabase } from "@/lib/supabaseClient"
 
-export async function POST(request: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const { email, password, fullName, companyName } = await request.json()
+    const { email, password, fullName } = await req.json()
 
-    // Mock user creation - in real app, this would save to database
-    if (email && password && fullName) {
-      const mockUser = {
-        id: Date.now().toString(),
-        email,
-        full_name: fullName,
-        company_name: companyName || "",
-      }
-
-      return NextResponse.json({
-        success: true,
-        user: mockUser,
-        token: "mock-jwt-token",
-      })
+    if (!email || !password) {
+      return NextResponse.json({ success: false, error: "Email and password are required" }, { status: 400 })
     }
 
-    return NextResponse.json({ success: false, error: "Missing required fields" }, { status: 400 })
-  } catch (error) {
-    return NextResponse.json({ success: false, error: "Internal server error" }, { status: 500 })
+    // Sign up the user with Supabase
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { fullName },
+      },
+    })
+
+    if (error) {
+      return NextResponse.json({ success: false, error: error.message }, { status: 400 })
+    }
+
+    // Return the new user
+    return NextResponse.json({
+      success: true,
+      user: data.user,
+      session: data.session,
+      token: data.session?.access_token,
+    })
+  } catch (err) {
+    console.error("Signup error:", err)
+    return NextResponse.json({ success: false, error: "Internal Server Error" }, { status: 500 })
   }
 }
